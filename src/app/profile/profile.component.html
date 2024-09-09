@@ -1,0 +1,23 @@
+<div class="profile">
+    <div class="profile-menu">
+        <div class="back"
+             routerLink="/dashboard">
+            <i class="fa-solid fa-arrow-rotate-left"><span style="margin-left: 10px;">Back</span></i>
+        </div>
+        <div (click)="logout()"
+             class="logout">
+            <i class="fa-solid fa-arrow-right-from-bracket"><span style="margin-left: 10px">Logout</span></i>
+        </div>
+    </div>
+    <div class="profile-body">
+        <form (ngSubmit)="onUpdateProfile(newUsername)">
+            <label for="new-username">New Username:</label>
+            <input type="text"
+                   id="new-username"
+                   name="new-username"
+                   [(ngModel)]="newUsername"
+                   required>
+            <button type="submit">Update Profile</button>
+        </form>
+    </div>
+</div>

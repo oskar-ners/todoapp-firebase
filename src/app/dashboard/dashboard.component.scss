@@ -1,0 +1,226 @@
+.container {
+  height: 600px;
+  width: 700px;
+  overflow-y: auto;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  text-align: center;
+  .task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    word-wrap: break-word;
+    animation: fadeIn 0.5s ease forwards;
+    & button {
+      background-color: transparent;
+      border: 2px solid #3498db;
+      color: #3498db;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-left: 10px;
+      white-space: nowrap;
+      &:hover {
+        .task button:hover {
+          background-color: #3498db;
+          color: white;
+          transform: scale(1.05);
+        }
+      }
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.4);
+      }
+      &.done {
+        border-color: #27ae60;
+        color: #27ae60;
+        &:hover {
+          background-color: #27ae60;
+          color: white;
+        }
+      }
+    }
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    }
+    & p {
+      font-size: 16px;
+      color: #2c3e50;
+      margin: 0;
+      flex: 1;
+      padding-right: 10px;
+    }
+  }
+}
+
+button {
+  background-color: transparent;
+  border: 2px solid #3498db;
+  color: #3498db;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #3498db;
+    color: white;
+    transform: scale(1.05);
+  }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.4);
+  }
+  &.done {
+    border-color: #27ae60;
+    color: #27ae60;
+    &:hover {
+      background-color: #27ae60;
+      color: white;
+    }
+  }
+}
+
+.add-task {
+  margin: 20px 0;
+  & h1 {
+    font-size: 24px;
+    color: #34495e;
+    margin-bottom: 20px;
+  }
+  & input {
+    width: 80%;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    transition: box-shadow 0.2s ease;
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    }
+  }
+  & button {
+    background-color: #e67e22;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    color: white;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: #d35400;
+    }
+  }
+}
+
+.edit-task-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ecf0f1;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 10px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  word-wrap: break-word;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  input[type="text"] {
+    width: 70%;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: box-shadow 0.2s ease;
+    margin-right: 10px;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    }
+  }
+
+  button {
+    background-color: #3498db;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #2980b9;
+      transform: scale(1.05);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.4);
+    }
+  }
+}
+
+p {
+  text-align: left;
+  margin: 0;
+  word-wrap: break-word;
+  max-width: 70%;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+.hide {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.open,
+.profile {
+  cursor: pointer;
+  display: inline-block;
+  margin: 15px;
+  padding: 10px;
+  border: 2px solid black;
+}
+
+.menu-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

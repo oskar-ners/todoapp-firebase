@@ -1,0 +1,31 @@
+<div class="login-form">
+    <h1>Login</h1>
+    <form #form="ngForm"
+          (ngSubmit)="onSubmit(form)">
+        <input type="text"
+               name="email"
+               id="email"
+               [(ngModel)]="email"
+               placeholder="Email">
+        @if (form.submitted && !email) {
+        <p class="error">
+            Email is required field.
+        </p>
+        }
+        <input type="password"
+               name="password"
+               id="password"
+               [(ngModel)]="password"
+               placeholder="Password">
+        @if (form.submitted && !password) {
+        <p class="error">
+            Password is required field.
+        </p>
+        }
+        <button type="submit">Login</button>
+        <a routerLink="/register">don't have an account? register!</a>
+        @if (errorMessage) {
+        <p class="error-submit">{{errorMessage}}</p>
+        }
+    </form>
+</div>
