@@ -1,41 +1,52 @@
-<!-- MENU, NAVIGATION -->
 @if (!isToDoVisible) {
 <div class="menu-nav">
-    <div class="open">
-        <i (click)="isToDoVisible = !isToDoVisible"
-           class="fa-solid fa-arrow-up-right-from-square"><span style="margin-left: 10px">Show to do app</span></i>
+    <div class="menu-toggle"
+         (click)="isToDoVisible = !isToDoVisible">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        <span class="menu-text">Show to do app</span>
     </div>
-    <div routerLink="/profile"
-         class="profile">
-        <i class="fa-solid fa-user"><span style="margin-left: 10px"><span
-                      style="margin-right: 5px;">{{firebaseAuth.currentUser?.displayName}}</span> Profile</span></i>
+    <div class="profile-link"
+         routerLink="/profile">
+        <i class="fa-solid fa-user"></i>
+        <span class="profile-text">
+            <span class="profile-name">{{firebaseAuth.currentUser?.displayName}}</span>
+            Profile
+        </span>
     </div>
 </div>
 }
 
 <!-- TO DO APP -->
 @if(isToDoVisible) {
-<div class="container centered">
-    <i (click)="isToDoVisible = !isToDoVisible"
-       class="fa-solid fa-xmark hide"></i>
+<div class="todo-container">
+    <i class="fa-solid fa-xmark close-btn"
+       (click)="isToDoVisible = !isToDoVisible"></i>
     <app-add-task></app-add-task>
-    <h1 style="text-align: center; margin-bottom: 20px">Your tasks list: ({{todoList.length}})</h1>
-    <app-filter-list [toDoList]="todoList"></app-filter-list>
+    <div class="filter-buttons">
+        <button class="btn"
+                (click)="filterList('all')">All</button>
+        <button class="btn"
+                (click)="filterList('overdue')">Overdue</button>
+    </div>
+    <h1 class="todo-header">Your tasks list: ({{todoList.length}})</h1>
     @for(todo of todoList; track todo.task; let i = $index) {
-    <div (dblclick)="todo.isEditing = !todo.isEditing"
-         class="task">
+    <div class="task-item"
+         (dblclick)="todo.isEditing = !todo.isEditing">
         @if (todo.isEditing) {
-        <app-edit-task style="width: 100%"
+        <app-edit-task class="edit-task"
                        [toDoId]="i"></app-edit-task>
         }
         @if (!todo.isEditing) {
-        <p [ngClass]="{'line-through' : todo.isCompleted}">{{i + 1}}. {{todo.task}} - </p>
+        <p [ngClass]="{'line-through' : todo.isCompleted}"
+           class="task-text">
+            {{i + 1}}. {{todo.task}} - {{todo.date.toDate() | date: 'dd/MM/yyyy'}}
+        </p>
         <app-remove-task [toDoId]="i"></app-remove-task>
         <app-task-done [toDoId]="i"
                        [isCompleted]="todo.isCompleted"></app-task-done>
         }
     </div>
     }
-    <span style="font-size: 12px; font-weight: bold;">Want to edit a task? Double-click on it!</span>
+    <span class="edit-info">Want to edit a task? Double-click on it!</span>
 </div>
 }

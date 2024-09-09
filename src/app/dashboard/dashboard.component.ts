@@ -7,10 +7,9 @@ import { RouterLink } from '@angular/router';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { RemoveTaskComponent } from '../remove-task/remove-task.component';
 import { TaskDoneComponent } from '../task-done/task-done.component';
-import { NgClass } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import { EditTaskComponent } from '../edit-task/edit-task.component';
 import { Auth } from '@angular/fire/auth';
-import { FilterListComponent } from '../filter-list/filter-list.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,9 +20,9 @@ import { FilterListComponent } from '../filter-list/filter-list.component';
     RemoveTaskComponent,
     TaskDoneComponent,
     EditTaskComponent,
-    FilterListComponent,
     RouterLink,
     NgClass,
+    DatePipe,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
@@ -35,7 +34,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   private todosSubscription: Subscription | undefined;
 
   todoList: TodoInterface[] = [];
-  isToDoVisible?: boolean = false;
+  isToDoVisible?: boolean = true;
 
   ngOnInit(): void {
     this.loadTodos();
@@ -56,5 +55,18 @@ export class DashboardComponent implements OnInit, OnDestroy {
         console.error(error.message);
       }
     );
+  }
+
+  filterList(value: string): void {
+    if (value === 'overdue') {
+      const today = new Date();
+      const filteredList = this.todoList.filter((todo) => {
+        const todoDate = todo.date.toDate();
+        return todoDate < today;
+      });
+      this.todoList = filteredList;
+    } else if (value === 'all') {
+      this.loadTodos();
+    }
   }
 }

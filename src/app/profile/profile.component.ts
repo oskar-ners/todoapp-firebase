@@ -3,7 +3,6 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { UpdateProfileService } from '../services/update-profile.service';
 import { FormsModule } from '@angular/forms';
-import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +14,6 @@ import { Auth } from '@angular/fire/auth';
 export class ProfileComponent {
   authService = inject(AuthService);
   router = inject(Router);
-  firebaseAuth = inject(Auth);
   updateProfileService = inject(UpdateProfileService);
 
   newUsername: string = '';

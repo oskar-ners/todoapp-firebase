@@ -31,6 +31,7 @@ export class TodoService {
 
       addDoc(todosCollection, {
         task: text,
+        date: Timestamp.now(),
         isCompleted: false,
       })
         .then(() => {
