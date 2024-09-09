@@ -26,14 +26,13 @@ img {
   display: block;
 }
 
-.centered {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.error {
+  display: block;
+  color: red;
+  margin-bottom: 10px;
+  font-size: 13px;
 }
 
-.error {
-  color: red;
-  font-size: 13px;
+.center {
+  text-align: center;
 }

@@ -5,9 +5,14 @@ import { TodoService } from '../services/todo.service';
   selector: 'app-remove-task',
   standalone: true,
   imports: [],
-  template: `<button style="margin-right: 10px;" (click)="removeToDo()">
-    Remove
-  </button>`,
+  template: ` <div class="remove-task">
+    <button
+      class="remove-task-button"
+      (click)="removeToDo()"
+    >
+      Remove
+    </button>
+  </div>`,
   styleUrls: ['../dashboard/dashboard.component.scss'],
 })
 export class RemoveTaskComponent {

@@ -5,9 +5,13 @@ import { TodoService } from '../services/todo.service';
   selector: 'app-task-done',
   standalone: true,
   imports: [],
-  template: `<button (click)="toDoDone()">
-    {{ isCompleted ? 'Undone' : 'Done' }}
-  </button>`,
+  template: `
+    <div class="task-done">
+      <button class="task-done-button" (click)="toDoDone()">
+        {{ isCompleted ? 'Undone' : 'Done' }}
+      </button>
+    </div>
+  `,
   styleUrls: ['../dashboard/dashboard.component.scss'],
 })
 export class TaskDoneComponent {

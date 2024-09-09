@@ -9,12 +9,18 @@ import { TodoService } from '../services/todo.service';
   template: `
     <div class="edit-task-container">
       <input
+        class="edit-task-container-input"
         type="text"
         placeholder="Change your task name"
         [(ngModel)]="editedTaskName"
         (keyup.enter)="editToDo(toDoId, editedTaskName)"
       />
-      <button (click)="editToDo(toDoId, editedTaskName)">Edit Task</button>
+      <button
+        class="edit-task-container-button"
+        (click)="editToDo(toDoId, editedTaskName)"
+      >
+        Edit Task
+      </button>
     </div>
   `,
   styleUrl: '../dashboard/dashboard.component.scss',

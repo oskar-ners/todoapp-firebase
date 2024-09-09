@@ -7,9 +7,10 @@ import { RouterLink } from '@angular/router';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { RemoveTaskComponent } from '../remove-task/remove-task.component';
 import { TaskDoneComponent } from '../task-done/task-done.component';
-import { DatePipe, NgClass } from '@angular/common';
+import { DatePipe, NgClass, NgStyle, TitleCasePipe } from '@angular/common';
 import { EditTaskComponent } from '../edit-task/edit-task.component';
 import { Auth } from '@angular/fire/auth';
+import { Timestamp } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,7 +23,9 @@ import { Auth } from '@angular/fire/auth';
     EditTaskComponent,
     RouterLink,
     NgClass,
+    NgStyle,
     DatePipe,
+    TitleCasePipe,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
@@ -59,9 +62,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   filterList(value: string): void {
     if (value === 'overdue') {
-      const today = new Date();
+      const today = Timestamp.fromDate(new Date());
       const filteredList = this.todoList.filter((todo) => {
-        const todoDate = todo.date.toDate();
+        const todoDate = todo.deadlineDate;
         return todoDate < today;
       });
       this.todoList = filteredList;

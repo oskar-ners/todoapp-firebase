@@ -77,6 +77,11 @@ form button:active {
   background-color: #3e8e41;
 }
 
+.icon-back span,
+.icon-logout span {
+  margin-left: 10px;
+}
+
 @media screen and (max-width: 480px) {
   form {
     padding: 1.5rem;

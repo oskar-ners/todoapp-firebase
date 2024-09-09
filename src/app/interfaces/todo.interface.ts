@@ -2,7 +2,8 @@ import { Timestamp } from '@angular/fire/firestore';
 
 export interface TodoInterface {
   task: string;
-  date: Timestamp;
+  deadlineDate: Timestamp;
+  priority: string;
   isCompleted: boolean;
   isEditing: boolean;
 }

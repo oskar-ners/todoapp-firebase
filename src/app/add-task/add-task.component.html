@@ -1,13 +1,64 @@
-<div class="add-task">
-    <form #form="ngForm"
-          (ngSubmit)="addTask(taskName)">
-        <h1>Add new task</h1>
-        <input type="text"
-               name="task"
-               id="task"
-               [(ngModel)]="taskName"
-               placeholder="Add your next task"
-               (keyup.enter)="addTask(taskName)">
+<h1 class="center">Add new task</h1>
+<div class="add-task-container">
+    <!-- Add task form  -->
+    <form class="add-task-container-form"
+          #form="ngForm"
+          (ngSubmit)="addTask(taskName, priority, deadlineDate, form)"
+          (keyup.enter)="addTask(taskName, priority, deadlineDate, form)">
+
+        <!-- Task Name -->
+        <label class="add-task-container-form-task"
+               for="task">
+            Add new task:
+            <input type="text"
+                   name="task"
+                   id="task"
+                   [(ngModel)]="taskName"
+                   #task="ngModel"
+                   required>
+            @if(task.invalid && form.submitted){
+            @if(task.errors?.['required']) {
+            <span class="error">Task name is required.</span>
+            }
+            }
+        </label>
+        <!-- Priority -->
+        <label class="add-task-container-form-priority"
+               for="priority">
+            Choose priority:
+            <select name="priority"
+                    id="priority"
+                    [(ngModel)]="priority"
+                    #prioritySelect="ngModel"
+                    required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+        </label>
+        @if(prioritySelect.invalid && form.submitted){
+        @if(prioritySelect.errors?.['required']) {
+        <span class="error">Priority is required.</span>
+        }
+        }
+
+        <!-- Deadline Date -->
+        <label class="add-task-container-form-deadline"
+               for="deadlineDate">
+            Choose deadline date:
+            <input type="date"
+                   id="deadlineDate"
+                   name="deadlineDate"
+                   [(ngModel)]="deadlineDate"
+                   required>
+            @if(form.submitted) {
+            @if(form.controls['deadlineDate'].errors?.['required']) {
+            <span class="error">Deadline date is required.</span>
+            }
+            }
+        </label>
+
+        <!-- Submit -->
         <button type="submit">Add task</button>
     </form>
 </div>

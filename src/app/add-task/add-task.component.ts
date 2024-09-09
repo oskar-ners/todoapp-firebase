@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { TodoService } from '../services/todo.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
+import { Timestamp } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-add-task',
@@ -11,13 +12,17 @@ import { FormsModule } from '@angular/forms';
 })
 export class AddTaskComponent {
   todoService = inject(TodoService);
-  taskName: string = '';
 
-  addTask(text: string) {
-    if (this.taskName.length === 0) return;
+  taskName: string | null = '';
+  priority: string = '';
+  deadlineDate!: Date;
+
+  addTask(text: string | null, priority: string, date: Date, form: NgForm) {
+    if (this.taskName?.length === 0 || this.taskName === null) return;
     else {
-      this.todoService.addToDo(text);
-      this.taskName = '';
+      const deadlineTimestamp = Timestamp.fromDate(new Date(date));
+      this.todoService.addToDo(text, priority, deadlineTimestamp);
+      form.resetForm();
     }
   }
 }

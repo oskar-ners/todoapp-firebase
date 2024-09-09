@@ -23,19 +23,21 @@ export class TodoService {
   firebaseAuth = inject(Auth);
   firestore = inject(Firestore);
 
-  addToDo(text: string): void {
+  //   Dodanie zadania
+  addToDo(text: string | null, priority: string, date: Timestamp): void {
     if (this.firebaseAuth.currentUser) {
       const uid = this.firebaseAuth.currentUser?.uid;
-
       const todosCollection = collection(this.firestore, 'users', uid, 'todos');
 
       addDoc(todosCollection, {
         task: text,
-        date: Timestamp.now(),
+        priority: priority,
+        deadlineDate: date,
         isCompleted: false,
+        isEditing: false,
       })
         .then(() => {
-          console.log('Task added');
+          console.log('Task added!');
         })
         .catch((error) => {
           console.log('Error ' + error.message);
@@ -43,6 +45,7 @@ export class TodoService {
     }
   }
 
+  //   Edycja zadania
   async editToDo(toDoId: number, editedTaskName: string): Promise<void> {
     if (this.firebaseAuth.currentUser) {
       const uid = this.firebaseAuth.currentUser.uid;
@@ -53,11 +56,18 @@ export class TodoService {
       if (editedTaskName.length > 0) {
         await updateDoc(doc(todosCollection, todoDocsIds[toDoId]), {
           task: editedTaskName,
-        });
+        })
+          .then(() => {
+            console.log('Task edited!');
+          })
+          .catch((error) => {
+            console.log('Error ' + error.message);
+          });
       }
     }
   }
 
+  //   Usunięcie zadania
   async removeToDo(toDoId: number): Promise<void> {
     if (this.firebaseAuth.currentUser) {
       const uid = this.firebaseAuth.currentUser?.uid;
@@ -65,17 +75,22 @@ export class TodoService {
       const todosDocs = await getDocs(todosCollection);
       const todoIds = todosDocs.docs.map((document) => document.id);
 
-      await deleteDoc(doc(todosCollection, todoIds[toDoId]));
-      console.log(`Task with ID ${todoIds[toDoId]} removed`);
+      await deleteDoc(doc(todosCollection, todoIds[toDoId]))
+        .then(() => {
+          console.log(`Task with ID ${todoIds[toDoId]} removed`);
+        })
+        .catch((error) => {
+          console.log('Error ' + error.message);
+        });
     }
   }
 
+  //   Oznaczanie zadanie jako zrobione lub nie
   async toDoDone(toDoId: number): Promise<void> {
     if (!this.firebaseAuth.currentUser) return;
 
     const uid = this.firebaseAuth.currentUser.uid;
     const todosCollection = collection(this.firestore, 'users', uid, 'todos');
-
     const todoDocsIds = (await getDocs(todosCollection)).docs.map(
       (doc) => doc.id
     );
@@ -84,10 +99,17 @@ export class TodoService {
     const todoDocSnapshot = await getDoc(todoDocRef);
     if (todoDocSnapshot.exists()) {
       const isCompleted = todoDocSnapshot.data()['isCompleted'];
-      await updateDoc(todoDocRef, { isCompleted: !isCompleted });
+      await updateDoc(todoDocRef, { isCompleted: !isCompleted })
+        .then(() => {
+          console.log('Task done');
+        })
+        .catch((error) => {
+          console.log('Error ' + error.message);
+        });
     }
   }
 
+  //   Pobranie listy zadań
   getTodos(): Observable<TodoInterface[]> | null {
     return new Observable((observer) => {
       onAuthStateChanged(this.firebaseAuth, (user) => {
