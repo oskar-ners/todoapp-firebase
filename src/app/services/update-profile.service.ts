@@ -9,7 +9,7 @@ export class UpdateProfileService {
   firebaseAuth = inject(Auth);
 
   //   Zaaktualizowanie profilu nowym username
-  updateUserProfile(newUsername: string) {
+  updateUserProfile(newUsername: string | null) {
     const currentUser = this.firebaseAuth.currentUser;
     if (currentUser) {
       updateProfile(currentUser, {

@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { UpdateProfileService } from '../services/update-profile.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -16,17 +16,18 @@ export class ProfileComponent {
   router = inject(Router);
   updateProfileService = inject(UpdateProfileService);
 
-  newUsername: string = '';
+  newUsername: string | null = '';
 
   logout(): void {
     this.authService.logout();
     this.router.navigateByUrl('/');
   }
 
-  onUpdateProfile(newUsername: string): void {
-    if (newUsername.length > 1) {
+  onUpdateProfile(newUsername: string | null, form: NgForm): void {
+    if (this.newUsername?.length === 0 || this.newUsername === null) return;
+    else {
       this.updateProfileService.updateUserProfile(newUsername);
-      this.newUsername = '';
+      form.resetForm();
     }
   }
 }

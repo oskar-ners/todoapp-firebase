@@ -30,6 +30,7 @@
 }
 
 .todo-container {
+  position: relative;
   width: 800px;
   height: 630px;
   overflow-y: scroll;
@@ -62,6 +63,16 @@
   &-edit-info {
     font-weight: bold;
     text-align: center;
+  }
+  &-close-btn {
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    &:hover {
+      transform: rotate(180deg) scale(1.2);
+    }
   }
 }
 
@@ -118,6 +129,10 @@
   padding: 15px;
   &-toggle {
     cursor: pointer;
+    transition: transform 0.3 ease;
+    &:hover {
+      transform: scale(1.1);
+    }
     &-icon {
       margin-right: 10px;
     }
@@ -126,6 +141,10 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    transition: transform 0.3 ease;
+    &:hover {
+      transform: scale(1.1);
+    }
     & i {
       margin-right: 10px;
     }
@@ -154,10 +173,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.todo-container-task-item-buttons {
-  display: flex;
+  &-buttons {
+    display: flex;
+  }
 }
 
 @media (max-width: 768px) {
