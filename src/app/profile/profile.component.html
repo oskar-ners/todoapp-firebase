@@ -1,13 +1,7 @@
 <div class="profile">
     <div class="profile-menu">
-        <div class="back"
-             routerLink="/dashboard">
-            <i class="fa-solid fa-arrow-rotate-left icon-logout"><span>Back</span></i>
-        </div>
-        <div (click)="logout()"
-             class="logout">
-            <i class="fa-solid fa-arrow-right-from-bracket icon-back"><span>Logout</span></i>
-        </div>
+        <app-back-button></app-back-button>
+        <app-logout-button></app-logout-button>
     </div>
     <div class="profile-body">
         <form #form="ngForm"

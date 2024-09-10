@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   private todosSubscription: Subscription | undefined;
 
   todoList: TodoInterface[] = [];
-  isToDoVisible?: boolean = true;
+  isToDoVisible?: boolean = false;
 
   ngOnInit(): void {
     this.loadTodos();
