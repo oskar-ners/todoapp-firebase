@@ -70,6 +70,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.todoList = filteredList;
     } else if (value === 'all') {
       this.loadTodos();
+    } else {
+      this.todoList.sort((a, b) => {
+        const priorityOrder: Record<string, number> = {
+          high: 1,
+          medium: 2,
+          low: 3,
+        };
+        return priorityOrder[a.priority] - priorityOrder[b.priority];
+      });
     }
   }
 }

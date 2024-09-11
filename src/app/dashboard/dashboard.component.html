@@ -33,6 +33,8 @@
                 (click)="filterList('all')">All</button>
         <button class="filter-buttons-btn"
                 (click)="filterList('overdue')">Overdue</button>
+        <button (click)="filterList('sort')"
+                class="filter-buttons-btn">Sort</button>
     </div>
     <h1 class="todo-container-h1">Your tasks list: ({{todoList.length}})</h1>
     @for(todo of todoList; track todo.task; let i = $index) {
