@@ -19,7 +19,7 @@ import { AuthService } from '../services/auth.service';
       display: inline-block;
       margin: 15px;
       padding: 10px;
-      border: 2px solid black;
+      border: 2px solid white;
       & span {
         margin-left: 10px;
       }

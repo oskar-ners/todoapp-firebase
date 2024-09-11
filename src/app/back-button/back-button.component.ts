@@ -16,7 +16,8 @@ import { RouterLink } from '@angular/router';
     display: inline-block;
     margin: 15px;
     padding: 10px;
-    border: 2px solid black;
+    border: 2px solid white;
+    color: white;
     & span {
         margin-left: 10px;
     }

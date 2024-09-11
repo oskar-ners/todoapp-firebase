@@ -1,4 +1,6 @@
-<app-back-button></app-back-button>
+<div style="background-color: #333">
+    <app-back-button></app-back-button>
+</div>
 
 <form #form="ngForm"
       (ngSubmit)="getWeather(location)"
@@ -38,9 +40,9 @@
 
 @if(!weatherData) {
 <div class="loading">
-    <p>City: {{geoWeatherData.location.city}}</p>
-    <p>Country: {{geoWeatherData.location.country}}</p>
-    <p>Region: {{geoWeatherData.location.region}}</p>
-    <p>Timezone: {{geoWeatherData.location.timezone}}</p>
+    <p>City: {{geoWeatherData?.location?.city}}</p>
+    <p>Country: {{geoWeatherData?.location?.country}}</p>
+    <p>Region: {{geoWeatherData?.location?.region}}</p>
+    <p>Timezone: {{geoWeatherData?.location?.timezone}}</p>
 </div>
 }

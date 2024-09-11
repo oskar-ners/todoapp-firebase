@@ -22,7 +22,7 @@ export class WeatherComponent implements OnInit {
   weatherService = inject(WeatherService);
 
   weatherData!: Weather;
-  geoWeatherData!: GeoWeather;
+  geoWeatherData!: GeoWeather | undefined;
   location: string = '';
 
   ngOnInit() {
