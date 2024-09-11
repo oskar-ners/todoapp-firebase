@@ -38,6 +38,9 @@
 
 @if(!weatherData) {
 <div class="loading">
-    <p>Loading...</p>
+    <p>City: {{geoWeatherData.location.city}}</p>
+    <p>Country: {{geoWeatherData.location.country}}</p>
+    <p>Region: {{geoWeatherData.location.region}}</p>
+    <p>Timezone: {{geoWeatherData.location.timezone}}</p>
 </div>
 }
