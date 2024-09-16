@@ -12,7 +12,7 @@ import { TodoService } from '../services/todo.service';
       </button>
     </div>
   `,
-  styleUrls: ['../dashboard/dashboard.component.scss'],
+  styleUrls: ['../to-do-app/to-do-app.component.scss'],
 })
 export class TaskDoneComponent {
   todoService = inject(TodoService);

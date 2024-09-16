@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { DarkModeComponent } from './dark-mode/dark-mode.component';
+import { NavComponent } from './nav/nav.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, DarkModeComponent],
+  imports: [RouterOutlet, NavComponent],
   templateUrl: './app.component.html',
 })
 export class AppComponent {}

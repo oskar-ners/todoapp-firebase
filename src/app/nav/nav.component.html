@@ -1,0 +1,30 @@
+@if(currentUrl !== '/' && currentUrl === '/dashboard') {
+<div class="menu-nav">
+    <div class="menu-nav-toggle"
+         routerLink="/todoapp">
+        <i class="fa-solid fa-arrow-up-right-from-square menu-nav-toggle-icon"></i>
+        <span class="menu-nav-toggle-text">Show to do app</span>
+    </div>
+    <div class="menu-nav-weather"
+         routerLink="/weather">
+        <i class="fa-solid fa-cloud menu-nav-weather"></i>
+        <span class="menu-nav-toggle-text">Show weather</span>
+    </div>
+    <div class="menu-nav-profile-link"
+         routerLink="/profile">
+        <i class="fa-solid fa-user menu-nav-profile-link-icon"></i>
+        <span class="menu-nav-profile-text">
+            <span class="menu-nav-profile-text-name">{{firebaseAuth.currentUser?.displayName | titlecase}}</span>
+            Profile
+        </span>
+    </div>
+</div>
+}
+@else {
+@if(currentUrl !== '/') {
+<div class="menu-nav">
+    <app-back-button></app-back-button>
+    <app-logout-button></app-logout-button>
+</div>
+}
+}

@@ -7,7 +7,8 @@
                id="username"
                [(ngModel)]="username"
                placeholder="Username"
-               required>
+               required
+               autocomplete="username">
         @if (form.submitted && !username) {
         <p class="error">
             Username is required field.
@@ -18,7 +19,8 @@
                id="email"
                [(ngModel)]="email"
                placeholder="Email"
-               required>
+               required
+               autocomplete="email">
         @if (form.submitted && !email) {
         <p class="error">
             Email is required field.
@@ -29,7 +31,8 @@
                id="password"
                [(ngModel)]="password"
                placeholder="Password"
-               required>
+               required
+               autocomplete="new-password">
         @if (form.submitted && !password) {
         <p class="error">
             Password is required field.

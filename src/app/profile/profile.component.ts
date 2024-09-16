@@ -4,6 +4,7 @@ import { UpdateProfileService } from '../services/update-profile.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { BackButtonComponent } from '../back-button/back-button.component';
 import { LogoutButtonComponent } from '../logout-button/logout-button.component';
+import { DarkModeComponent } from "../dark-mode/dark-mode.component";
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +14,8 @@ import { LogoutButtonComponent } from '../logout-button/logout-button.component'
     FormsModule,
     BackButtonComponent,
     LogoutButtonComponent,
-  ],
+    DarkModeComponent
+],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
 })

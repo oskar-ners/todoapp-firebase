@@ -8,21 +8,19 @@ import { AuthService } from '../services/auth.service';
   imports: [],
   template: `
     <div (click)="logout()" class="logout">
-      <i class="fa-solid fa-arrow-right-from-bracket icon-back"
-        ><span>Logout</span></i
-      >
+      <i class="fa-solid fa-arrow-right-from-bracket icon-back"></i>
+      <span>Logout</span>
     </div>
   `,
   styles: `
     .logout {
-      cursor: pointer;
-      display: inline-block;
-      margin: 15px;
-      padding: 10px;
-      border: 2px solid white;
-      & span {
-        margin-left: 10px;
-      }
+        cursor: pointer;
+        &:hover {
+            transform: scale(1.1);
+        }
+        span {
+            margin-left: 10px;
+        }
     }
   `,
 })

@@ -21,6 +21,7 @@ import { Component, signal } from '@angular/core';
     bottom: 3%;
     right: 3%;
     transition: transform 0.3 ease;
+    z-index: 2;
     & button {
     padding: 10px;
     letter-spacing: 2px;

@@ -28,6 +28,8 @@ export class LoginComponent {
           this.errorMessage = err.message;
         },
       });
+    } else {
+      this.errorMessage = 'Form is not valid. Please check the input fields.';
     }
   }
 }

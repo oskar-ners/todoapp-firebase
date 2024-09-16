@@ -1,203 +1,74 @@
-.add-task-container {
-  background-color: #fff;
-  padding: 20px;
-  margin: 20px;
-  border-radius: 8px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
-  &-form input,
-  &-form select {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  &-form button {
-    width: 100%;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 12px;
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    &:hover {
-      background-color: #45a049;
-    }
-  }
-}
-
-.todo-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 800px;
-  height: 630px;
-  overflow-y: scroll;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 1px 25px rgba(0, 0, 0, 6);
-  &-h1 {
-    text-align: center;
-    font-size: 24px;
-    margin: 0 40px 0 20px;
-  }
-  &-task-item {
-    padding: 15px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    &-task-text {
-      font-size: 18px;
-    }
-    & .line-through {
-      text-decoration: line-through;
-      color: #999;
-    }
-  }
-  &-edit-info {
-    font-weight: bold;
-    text-align: center;
-  }
-  &-close-btn {
-    position: absolute;
-    top: 3%;
-    right: 3%;
-    font-size: 20px;
-    color: red !important;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    &:hover {
-      transform: rotate(180deg) scale(1.2);
-    }
-  }
-}
-
-.edit-task-container-input {
-  padding: 12px;
-  margin-right: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-.edit-task-container-button {
-  padding: 13px 15px !important;
-}
-
-.remove-task-button,
-.edit-task-container-button {
-  background-color: #f44336;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  &:hover {
-    background-color: #d32f2f;
-  }
-}
-
-.filter-buttons {
+.welcome-container {
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 15px;
-  &-btn {
-    background-color: #2196f3;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    &:hover {
-      background-color: #1976d2;
-    }
-  }
-}
-
-.menu-nav {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  background-color: #333;
-  color: white;
-  padding: 15px;
-  &-weather {
-    margin-right: 10px;
-    cursor: pointer;
-    transition: transform 0.3 ease;
-    &:hover {
-      transform: scale(1.1);
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(45deg, #ff6f61, #d3a1a8);
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  animation: gradientAnimation 10s ease infinite;
+  & .welcome-text {
+    text-align: center;
+    color: #fff;
+    z-index: 1;
+    & h1 {
+      font-size: 4rem;
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      transform: translateY(-50px);
+      animation: fadeInUp 1s 0.5s forwards;
     }
-  }
-  &-toggle {
-    cursor: pointer;
-    transition: transform 0.3 ease;
-    &:hover {
-      transform: scale(1.1);
+    & p {
+      font-size: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s 1s forwards;
     }
-    &-icon {
-      margin-right: 10px;
-    }
-  }
-  &-profile-link {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.3 ease;
-    &:hover {
-      transform: scale(1.1);
-    }
-    & i {
-      margin-right: 10px;
-    }
-  }
-  &-profile-text {
-    font-size: 18px;
   }
 }
 
-.task-done-button {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 10px;
-  transition: background-color 0.3s;
-  &:hover {
-    background-color: #388e3c;
+@keyframes gradientAnimation {
+  0% {
+    background: linear-gradient(45deg, #ff6f61, #d3a1a8);
+  }
+  50% {
+    background: linear-gradient(45deg, #d3a1a8, #ff6f61);
+  }
+  100% {
+    background: linear-gradient(45deg, #ff6f61, #d3a1a8);
   }
 }
 
-.todo-container-task-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  &-buttons {
-    display: flex;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 @media (max-width: 768px) {
-  .todo-container,
-  .add-task-container {
-    margin: 10px;
+  .welcome-text h1 {
+    font-size: 2.5rem !important;
+    margin-bottom: 0.25rem !important;
   }
 
-  .todo-container-task-item {
-    flex-direction: column;
-    align-items: flex-start;
+  .welcome-text p {
+    font-size: 1.2rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-text h1 {
+    font-size: 1.8rem !important;
+    margin-bottom: 0.2rem !important;
+  }
+
+  .welcome-text p {
+    font-size: 1rem !important;
   }
 }

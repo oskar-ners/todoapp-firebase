@@ -7,9 +7,13 @@
 html,
 body {
   height: 100vh;
-  font-family: "Montserrat", system-ui;
+  font-family: "Montserrat", system-ui !important;
   color: #333;
-  background-color: lightblue;
+  background: linear-gradient(45deg, #ff6f61, #d3a1a8);
+}
+
+button {
+  font-family: "Montserrat", system-ui !important;
 }
 
 ul,
@@ -39,7 +43,7 @@ img {
 }
 
 body.dark {
-  background-color: black;
+  background: linear-gradient(45deg, #333, #555) !important;
 
   .todo-container {
     background-color: black;
@@ -72,8 +76,11 @@ body.dark {
     background-color: black;
     border: 1px solid white;
     & h1 {
-        color: white !important;
+      color: white !important;
     }
+  }
+  .welcome-container {
+    background: linear-gradient(45deg, #333, #555) !important;
   }
   .error {
     color: red !important;

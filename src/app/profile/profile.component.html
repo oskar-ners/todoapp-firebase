@@ -1,8 +1,4 @@
 <div class="profile">
-    <div class="profile-menu">
-        <app-back-button></app-back-button>
-        <app-logout-button></app-logout-button>
-    </div>
     <div class="profile-body">
         <form #form="ngForm"
               (ngSubmit)="onUpdateProfile(newUsername, form)">
@@ -22,3 +18,4 @@
         </form>
     </div>
 </div>
+<app-dark-mode></app-dark-mode>

@@ -7,15 +7,6 @@
   border: 2px solid black;
 }
 
-.profile {
-  &-menu {
-    display: flex;
-    justify-content: space-between;
-    background-color: #333;
-    color: white;
-  }
-}
-
 .profile-body {
   position: absolute;
   top: 50%;
@@ -84,7 +75,8 @@ form button:active {
 
 @media screen and (max-width: 480px) {
   form {
-    padding: 1.5rem;
+    padding: 1rem;
+    min-width: 280px;
   }
 
   form input {

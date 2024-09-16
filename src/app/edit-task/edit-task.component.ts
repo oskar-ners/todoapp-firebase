@@ -1,6 +1,7 @@
 import { Component, Input, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TodoService } from '../services/todo.service';
+import { TodoInterface } from '../interfaces/todo.interface';
 
 @Component({
   selector: 'app-edit-task',
@@ -21,14 +22,22 @@ import { TodoService } from '../services/todo.service';
       >
         Edit Task
       </button>
+      <button
+        (click)="toDoList[toDoId].isEditing = false"
+        class="edit-task-container-button back"
+      >
+        Back
+      </button>
     </div>
   `,
-  styleUrl: '../dashboard/dashboard.component.scss',
+  styleUrls: ['../to-do-app/to-do-app.component.scss'],
 })
 export class EditTaskComponent {
   todoService = inject(TodoService);
 
   @Input({ required: true }) toDoId!: number;
+
+  @Input({ required: true }) toDoList!: TodoInterface[];
 
   editedTaskName: string = '';
 

@@ -7,21 +7,20 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink],
   template: `
     <div class="back" routerLink="/dashboard">
-      <i class="fa-solid fa-arrow-rotate-left icon-back"><span>Back</span></i>
+      <i class="fa-solid fa-arrow-rotate-left icon-back"></i>
+      <span>Back</span>
     </div>
   `,
   styles: `
-  .back {
-    cursor: pointer;
-    display: inline-block;
-    margin: 15px;
-    padding: 10px;
-    border: 2px solid white;
-    color: white;
-    & span {
-        margin-left: 10px;
+    .back {
+        cursor: pointer;
+        &:hover {
+            transform: scale(1.1);
+        }
+        span {
+            margin-left: 10px;
+        }
     }
-  }
   `,
 })
 export class BackButtonComponent {}

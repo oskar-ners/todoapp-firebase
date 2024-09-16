@@ -13,7 +13,7 @@ import { TodoService } from '../services/todo.service';
       Remove
     </button>
   </div>`,
-  styleUrls: ['../dashboard/dashboard.component.scss'],
+  styleUrls: ['../to-do-app/to-do-app.component.scss'],
 })
 export class RemoveTaskComponent {
   todoService = inject(TodoService);

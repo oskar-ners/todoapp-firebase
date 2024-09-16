@@ -1,52 +1,51 @@
-<div style="background-color: #333">
-    <app-back-button></app-back-button>
-</div>
+<div class="wrap">
+    <form #form="ngForm"
+          (ngSubmit)="getWeather(location)"
+          class="weather-form">
+        <label for="location"
+               class="form-label">
+            Type location:
+            <input type="text"
+                   id="location"
+                   name="location"
+                   [(ngModel)]="location"
+                   class="form-input">
+        </label>
+        <button type="submit"
+                class="form-button">Get Weather</button>
+        @if(showErrorMessage) {
+        <p style="margin-top: 10px;"
+           class="error">{{showErrorMessage}}</p>
+        }
+    </form>
 
-<form #form="ngForm"
-      (ngSubmit)="getWeather(location)"
-      class="weather-form">
-    <label for="location"
-           class="form-label">
-        Type location:
-        <input type="text"
-               id="location"
-               name="location"
-               [(ngModel)]="location"
-               class="form-input">
-    </label>
-    <button type="submit"
-            class="form-button">Get Weather</button>
-    @if(showErrorMessage) {
-    <p style="margin-top: 10px;"
-       class="error">{{showErrorMessage}}</p>
+    @if(weatherData) {
+    <div class="weather-info">
+        <h1 class="weather-title">Weather in {{ weatherData.location.name }}</h1>
+        <p class="weather-item">Country: <span>{{ weatherData.location.country }}</span></p>
+        <p class="weather-item">Temperature: <span>{{ weatherData.current.temp_c }}°C</span> (<span>{{
+                weatherData.current.temp_f }}°F</span>)</p>
+        <p class="weather-item">Condition: <span>{{ weatherData.current.condition.text }}</span></p>
+        <p class="weather-item">Humidity: <span>{{ weatherData.current.humidity }}%</span></p>
+        <p class="weather-item">Wind: <span>{{ weatherData.current.wind_kph }} kph</span> (<span>{{
+                weatherData.current.wind_mph }} mph</span>), Direction: <span>{{ weatherData.current.wind_dir }}</span>
+        </p>
+        <p class="weather-item">Pressure: <span>{{ weatherData.current.pressure_mb }} mb</span> (<span>{{
+                weatherData.current.pressure_in }} in</span>)</p>
+        <p class="weather-item">Visibility: <span>{{ weatherData.current.vis_km }} km</span> (<span>{{
+                weatherData.current.vis_miles }} miles</span>)</p>
+        <img [src]="weatherData.current.condition.icon"
+             alt="Weather icon"
+             class="weather-icon">
+    </div>
     }
-</form>
 
-@if(weatherData) {
-<div class="weather-info">
-    <h1 class="weather-title">Weather in {{ weatherData.location.name }}</h1>
-    <p class="weather-item">Country: <span>{{ weatherData.location.country }}</span></p>
-    <p class="weather-item">Temperature: <span>{{ weatherData.current.temp_c }}°C</span> (<span>{{
-            weatherData.current.temp_f }}°F</span>)</p>
-    <p class="weather-item">Condition: <span>{{ weatherData.current.condition.text }}</span></p>
-    <p class="weather-item">Humidity: <span>{{ weatherData.current.humidity }}%</span></p>
-    <p class="weather-item">Wind: <span>{{ weatherData.current.wind_kph }} kph</span> (<span>{{
-            weatherData.current.wind_mph }} mph</span>), Direction: <span>{{ weatherData.current.wind_dir }}</span></p>
-    <p class="weather-item">Pressure: <span>{{ weatherData.current.pressure_mb }} mb</span> (<span>{{
-            weatherData.current.pressure_in }} in</span>)</p>
-    <p class="weather-item">Visibility: <span>{{ weatherData.current.vis_km }} km</span> (<span>{{
-            weatherData.current.vis_miles }} miles</span>)</p>
-    <img [src]="weatherData.current.condition.icon"
-         alt="Weather icon"
-         class="weather-icon">
+    @if(!weatherData) {
+    <div class="loading">
+        <p>City: {{geoWeatherData?.location?.city}}</p>
+        <p>Country: {{geoWeatherData?.location?.country}}</p>
+        <p>Region: {{geoWeatherData?.location?.region}}</p>
+        <p>Timezone: {{geoWeatherData?.location?.timezone}}</p>
+    </div>
+    }
 </div>
-}
-
-@if(!weatherData) {
-<div class="loading">
-    <p>City: {{geoWeatherData?.location?.city}}</p>
-    <p>Country: {{geoWeatherData?.location?.country}}</p>
-    <p>Region: {{geoWeatherData?.location?.region}}</p>
-    <p>Timezone: {{geoWeatherData?.location?.timezone}}</p>
-</div>
-}

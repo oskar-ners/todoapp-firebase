@@ -8,7 +8,7 @@ import { Timestamp } from '@angular/fire/firestore';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './add-task.component.html',
-  styleUrls: ['../dashboard/dashboard.component.scss'],
+  styleUrls: ['../to-do-app/to-do-app.component.scss'],
 })
 export class AddTaskComponent {
   todoService = inject(TodoService);
