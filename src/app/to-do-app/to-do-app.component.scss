@@ -80,19 +80,17 @@
   }
 }
 
-.edit-task-container-input {
-  padding: 12px;
-  margin-right: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px;
-  @media (max-width: 768px) {
-    margin-bottom: 10px;
+.edit-task-container {
+  &-input {
+    padding: 12px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
   }
-}
-
-.edit-task-container-button {
-  padding: 13px 15px !important;
+  &-button {
+    padding: 13px 15px !important;
+  }
 }
 
 .remove-task-button,
@@ -114,17 +112,6 @@
   &:hover {
     background-color: #d32f2f;
   }
-}
-
-.task-edit-button {
-  background-color: #333;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 10px;
 }
 
 .filter-buttons {
@@ -172,6 +159,17 @@
   }
 }
 
+.task-edit-button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
 @media (max-width: 900px) {
   .todo-container {
     width: 500px;
@@ -181,8 +179,12 @@
     align-items: flex-start;
   }
 }
+
 @media (max-width: 768px) {
   .todo-container {
     width: 350px;
+  }
+  .edit-task-container-input {
+    margin-bottom: 10px;
   }
 }

@@ -36,7 +36,6 @@ export class EditTaskComponent {
   todoService = inject(TodoService);
 
   @Input({ required: true }) toDoId!: number;
-
   @Input({ required: true }) toDoList!: TodoInterface[];
 
   editedTaskName: string = '';

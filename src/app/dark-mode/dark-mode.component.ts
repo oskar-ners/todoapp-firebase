@@ -22,15 +22,15 @@ import { Component, signal } from '@angular/core';
     right: 3%;
     transition: transform 0.3 ease;
     z-index: 2;
-    & button {
+    button {
     padding: 10px;
     letter-spacing: 2px;
     text-transform: uppercase;
     cursor: pointer;
     font-size: 8px;
-    &:hover {
-    transform: scale(1.2);
-    }
+      &:hover {
+        transform: scale(1.2);
+      }
     }
   }
   .light {
@@ -49,11 +49,25 @@ import { Component, signal } from '@angular/core';
 export class DarkModeComponent {
   lightTheme = signal<boolean>(false);
 
+  ngOnInit(): void {
+    const savedTheme = localStorage.getItem('theme');
+    this.lightTheme.set(savedTheme === 'light');
+    this.updateBodyClass();
+  }
+
   switchTheme(): void {
     this.lightTheme.update((value) => !value);
+    const newTheme = this.lightTheme() ? 'light' : 'dark';
+    localStorage.setItem('theme', newTheme);
+    this.updateBodyClass();
+  }
+
+  updateBodyClass(): void {
     if (this.lightTheme()) {
       document.body.classList.add('dark');
+      document.body.classList.remove('light');
     } else {
+      document.body.classList.add('light');
       document.body.classList.remove('dark');
     }
   }

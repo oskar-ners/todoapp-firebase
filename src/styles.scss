@@ -45,43 +45,28 @@ img {
 body.dark {
   background: linear-gradient(45deg, #333, #555) !important;
 
-  .todo-container {
-    background-color: black;
-    border: 3px solid white;
-  }
-  .add-task-container {
-    background-color: black;
-  }
-  .weather-form {
-    background-color: black;
-  }
-  .weather-info {
-    background-color: black;
-  }
-  .profile-body form {
-    background-color: black;
-    border: 1px solid white;
-    & label {
-      color: white;
-    }
-  }
-  .login-form {
-    background-color: black;
-    border: 1px solid white;
-    & h1 {
-      color: white !important;
-    }
-  }
-  .register-form {
-    background-color: black;
-    border: 1px solid white;
-    & h1 {
-      color: white !important;
-    }
-  }
+  .todo-container,
+  .add-task-container,
+  .weather-form,
+  .weather-info,
+  .profile-body form,
+  .login-form,
+  .register-form,
   .welcome-container {
-    background: linear-gradient(45deg, #333, #555) !important;
+    background-color: black;
+    border: 1px solid white;
   }
+
+  .todo-container {
+    border-width: 3px;
+  }
+
+  .profile-body form label,
+  .login-form h1,
+  .register-form h1 {
+    color: white;
+  }
+
   .error {
     color: red !important;
   }
