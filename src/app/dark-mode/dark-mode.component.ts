@@ -33,13 +33,15 @@ import { Component, signal } from '@angular/core';
     }
   }
   .light {
+    background-color: black;
+    color: white;
+  }
+  .dark {
     background-color: white;
     color: black;
   }
-  .dark {
-    background-color: black;
-    color: white;
-    border: 1px solid white;
+  .dark, .light {
+    border: 2px solid purple;
   }
   `,
 })
