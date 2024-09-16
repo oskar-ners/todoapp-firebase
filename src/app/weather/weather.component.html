@@ -16,6 +16,10 @@
     </label>
     <button type="submit"
             class="form-button">Get Weather</button>
+    @if(showErrorMessage) {
+    <p style="margin-top: 10px;"
+       class="error">{{showErrorMessage}}</p>
+    }
 </form>
 
 @if(weatherData) {

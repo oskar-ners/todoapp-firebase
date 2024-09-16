@@ -25,6 +25,8 @@ export class WeatherComponent implements OnInit {
   geoWeatherData!: GeoWeather | undefined;
   location: string = '';
 
+  showErrorMessage: string = '';
+
   ngOnInit() {
     this.weatherService.getIPAddress().subscribe(
       (ipData: any) => {
@@ -49,11 +51,13 @@ export class WeatherComponent implements OnInit {
     this.weatherService.getWeather(location).subscribe({
       next: (weatherData: Weather) => {
         this.weatherData = weatherData;
+        this.showErrorMessage = '';
         console.log('you get your weather data!');
         console.log(weatherData);
       },
       error: (error) => {
         console.warn('Error ' + error.message);
+        this.showErrorMessage = error.message;
       },
     });
   }
