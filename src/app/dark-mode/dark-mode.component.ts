@@ -11,7 +11,7 @@ import { Component, signal } from '@angular/core';
         [ngClass]="lightTheme() ? 'dark' : 'light'"
         (click)="switchTheme()"
       >
-        {{ lightTheme() ? 'Dark Theme' : 'Light Theme' }}
+        {{ lightTheme() ? 'Light Theme' : 'Dark Theme' }}
       </button>
     </div>
   `,
@@ -48,8 +48,10 @@ export class DarkModeComponent {
 
   switchTheme(): void {
     this.lightTheme.update((value) => !value);
-    document.body.style.backgroundColor = this.lightTheme()
-      ? 'black'
-      : 'lightblue';
+    if (this.lightTheme()) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
   }
 }

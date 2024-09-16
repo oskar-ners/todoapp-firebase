@@ -37,3 +37,51 @@ img {
 .center {
   text-align: center;
 }
+
+body.dark {
+  background-color: black;
+
+  .todo-container {
+    background-color: black;
+    border: 3px solid white;
+  }
+  .add-task-container {
+    background-color: black;
+  }
+  .weather-form {
+    background-color: black;
+  }
+  .weather-info {
+    background-color: black;
+  }
+  .profile-body form {
+    background-color: black;
+    border: 1px solid white;
+    & label {
+      color: white;
+    }
+  }
+  .login-form {
+    background-color: black;
+    border: 1px solid white;
+    & h1 {
+      color: white !important;
+    }
+  }
+  .register-form {
+    background-color: black;
+    border: 1px solid white;
+    & h1 {
+        color: white !important;
+    }
+  }
+
+  div,
+  p,
+  span,
+  button,
+  label,
+  h1 {
+    color: white;
+  }
+}
