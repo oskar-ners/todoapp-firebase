@@ -51,14 +51,14 @@
   }
   & .error {
     text-align: left;
-    color: red;
+    color: red !important;
     font-size: 14px;
     margin: 0 0 15px 0;
   }
 
   & .error-submit {
     text-align: center;
-    color: red;
+    color: red !important;
     font-size: 14px;
     margin-top: 10px;
   }

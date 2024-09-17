@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-dark-mode',
@@ -8,67 +8,62 @@ import { Component, signal } from '@angular/core';
   template: `
     <div class="theme">
       <button
-        [ngClass]="lightTheme() ? 'dark' : 'light'"
-        (click)="switchTheme()"
+        [ngClass]="isDarkMode ? 'dark-mode-btn' : 'light-mode-btn'"
+        (click)="toggleMode()"
       >
-        {{ lightTheme() ? 'Light Theme' : 'Dark Theme' }}
+        {{ buttonLabel }}
       </button>
     </div>
   `,
   styles: `
-  .theme {
-    position: absolute;
-    bottom: 3%;
-    right: 3%;
-    transition: transform 0.3 ease;
-    z-index: 2;
-    button {
-    padding: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-size: 8px;
-      &:hover {
-        transform: scale(1.2);
+    .theme {
+      position: absolute;
+      bottom: 3%;
+      right: 3%;
+      z-index: 2;
+      transition: transform 0.3s ease;
+      button {
+        padding: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-size: 8px;
+        &:hover {
+          transform: scale(1.2);
+        }
       }
     }
-  }
-  .light {
-    background-color: black;
-    color: white;
-  }
-  .dark {
-    background-color: white;
-    color: black;
-  }
-  .dark, .light {
-    border: 2px solid purple;
-  }
+    .dark-mode-btn {
+      background-color: white !important;
+      color: black !important;
+    }
+    .light-mode-btn {
+      background-color: black !important;
+      color: white !important;
+    }
+    .dark-mode-btn, .light-mode-btn {
+      border: 2px solid purple;
+    }
   `,
 })
-export class DarkModeComponent {
-  lightTheme = signal<boolean>(false);
+export class DarkModeComponent implements OnInit {
+  isDarkMode: boolean = true;
+  buttonLabel: string = 'Light Mode';
 
-  ngOnInit(): void {
-    const savedTheme = localStorage.getItem('theme');
-    this.lightTheme.set(savedTheme === 'light');
-    this.updateBodyClass();
+  ngOnInit() {
+    this.isDarkMode = localStorage.getItem('darkMode') !== 'light';
+    this.updateMode();
   }
 
-  switchTheme(): void {
-    this.lightTheme.update((value) => !value);
-    const newTheme = this.lightTheme() ? 'light' : 'dark';
-    localStorage.setItem('theme', newTheme);
-    this.updateBodyClass();
+  toggleMode(): void {
+    this.isDarkMode = !this.isDarkMode;
+    localStorage.setItem('darkMode', this.isDarkMode ? 'dark' : 'light');
+    this.updateMode();
   }
 
-  updateBodyClass(): void {
-    if (this.lightTheme()) {
-      document.body.classList.add('dark');
-      document.body.classList.remove('light');
-    } else {
-      document.body.classList.add('light');
-      document.body.classList.remove('dark');
-    }
+  updateMode(): void {
+    document.body.classList.toggle('dark', this.isDarkMode);
+    document.body.classList.toggle('light', !this.isDarkMode);
+    this.buttonLabel = this.isDarkMode ? 'Light Mode' : 'Dark Mode';
   }
 }
