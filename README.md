@@ -1,3 +1,7 @@
+If you don't want to create account, you can login using these credentials below:
+Email: oskarek@op.pl 
+Password: oskarek
+
 # App
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
